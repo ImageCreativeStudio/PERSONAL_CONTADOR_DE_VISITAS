@@ -1,0 +1,131 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Estilos para el modo claro */
+:root {
+  --font-primary: "Montserrat", sans-serif;
+  --bg-color: #d8eeef;
+  --text-color: #151515;
+  --border: 1px solid #151515;
+  --var-h1: #000;
+  --var-border-h1: 1px solid rgb(25, 25, 25, 0.15);
+  --var-text-numero-visitantes: #000;
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+  --font-primary: "Montserrat", sans-serif;
+  --bg-color: #151515;
+  --text-color: #e8e4ce;
+  --border: 1px solid rgb(210, 202, 165);
+  --var-h1: #f8f7f6;
+  --var-border-h1: 1px solid rgb(255, 255, 255, 0.15);
+  --var-text-numero-visitantes: rgb(216, 236, 238);
+}
+
+/* Reseteo de estilos para los navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Aplicar las variables */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  letter-spacing: 0.3px;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  -webkit-transition: background-color 0.6s ease, color 0.6s ease;
+  -moz-transition: background-color 0.6s ease, color 0.6s ease;
+  -ms-transition: background-color 0.6s ease, color 0.6s ease;
+  -o-transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+  place-content: center;
+}
+
+/* Button */
+#toggle-dark-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  border: var(--border);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  padding: 10px 20px;
+  text-transform: lowercase;
+}
+
+#toggle-dark-mode:hover {
+  display: block;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -moz-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -ms-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -o-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+}
+
+#toggle:hover {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  outline: 0;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -moz-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -ms-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+  -o-transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Numeros del horario */
+#clock {
+  font-size: 2rem;
+  color: #aaa;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+h1 {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--var-text-color);
+  border-bottom: var(--var-border-h1);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.numeroVisitantes {
+  font-size: 1.2rem;
+  color: var(--var-text-numero-visitantes);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

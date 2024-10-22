@@ -1,33 +1,40 @@
 <?php
-// Configuración de la conexión a la base de datos
-$host = 'localhost';  // Puede variar dependiendo de tu servidor
-$db = 'contador_visitas';  // Nombre de tu base de datos
-$user = 'root';  // Usuario de la base de datos
-$password = '';  // Contraseña del usuario
+require_once "conexionBD.php";
+?>
 
-try {
-    // Conectar a la base de datos con PDO
-    $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $password);
-    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<!DOCTYPE html>
+<html lang="es">
 
-    // Leer el contador de visitas actual
-    $stmt = $conexion->prepare("SELECT contador FROM visitas WHERE id = 1");
-    $stmt->execute();
-    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitas</title>
+    <link rel="stylesheet" href="estilos.css"> <!-- Tu hoja de estilos, si tienes -->
+</head>
 
-    // Incrementar el contador
-    $contador = (int)$resultado['contador'] + 1;
+<body class="dark-mode">
+    <header>
+        <button id="toggle-dark-mode">Light</button> <!-- Por defecto en modo oscuro -->
+        <h1 class="text-center">Bienvenido a mi contador de visitas</h1>
+    </header>
 
-    // Actualizar el contador en la base de datos
-    $stmt = $conexion->prepare("UPDATE visitas SET contador = :contador WHERE id = 1");
-    $stmt->bindParam(':contador', $contador, PDO::PARAM_INT);
-    $stmt->execute();
+    <main class="text-center">
+        <h1>Fecha y Hora Actual</h1>
+        <p>La fecha actual es: <span class="numeroVisitantes"><?php echo $fechaActual; ?></span></p>
+        <p>Horario Argentina:</p>
+        <div id="clock"></div>
+        <p>Este sitio ha sido visitado <span class="numeroVisitantes"> <?php echo $numero_visitas; ?></span> veces.</p>
+        <!-- Aquí puedes agregar más contenido -->
+    </main>
 
-    // Mostrar el número de visitas
-    echo "Este sitio ha sido visitado $contador veces.";
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+    <footer>
+        <small class="text-center">
+            <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+        </small>
+    </footer>
 
-// Cerrar la conexión
-$conexion = null;
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
