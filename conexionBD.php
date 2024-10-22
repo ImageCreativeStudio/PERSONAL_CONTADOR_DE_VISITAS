@@ -34,12 +34,33 @@ $conexion = null;
 
 ?>
 
+<!-- Para la zona horaria y que aparezca en español -->
 <?php
 // Establecer la zona horaria
 date_default_timezone_set('America/Argentina/Buenos_Aires');
+// Establecer la configuración regional a español
+setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'esp');
 
 // Obtener la fecha y la hora actual en formato de 24 horas
-$fechaActual = date('d-M-Y');
-$horaActual = date('H:i:s'); // 'H' para formato de 24 horas
+$fechaActual = date('d-m-Y');
+$horaActual = date('h:i:s'); // 'H' para formato de 24 horas
+// Obtener el día de la semana actual
+$dia_actual = strftime("%A"); // %A devuelve el nombre completo del día
+?>
 
+
+<?php
+// Verifica si la extensión intl está habilitada
+if (extension_loaded('intl')) {
+    // Crear un objeto IntlDateFormatter para formatear la fecha
+    $fmt = new IntlDateFormatter('es_ES', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+
+    // Obtener el día actual
+    $dia_actual = $fmt->format(new DateTime());
+
+    // Mostrar el día actual
+    echo "Hoy es: $dia_actual";
+} else {
+    echo "La extensión Intl no está habilitada.";
+}
 ?>

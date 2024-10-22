@@ -20,7 +20,7 @@ require_once "conexionBD.php";
 
     <main class="text-center">
         <h1>Fecha y Hora Actual</h1>
-        <p>La fecha actual es: <span class="numeroVisitantes"><?php echo $fechaActual; ?></span></p>
+        <p>Hoy es <span class="numeroVisitantes"><?php echo "$dia_actual"; ?> <?php echo $fechaActual; ?></span></p>
         <p>Horario Argentina:</p>
         <div id="clock"></div>
         <p>Este sitio ha sido visitado <span class="numeroVisitantes"> <?php echo $numero_visitas; ?></span> veces.</p>
